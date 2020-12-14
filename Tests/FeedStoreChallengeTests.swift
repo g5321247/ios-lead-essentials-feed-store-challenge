@@ -4,6 +4,7 @@
 
 import XCTest
 import FeedStoreChallenge
+import RealmSwift
 
 class RealmFeedStore: FeedStore {
     func deleteCachedFeed(completion: @escaping DeletionCompletion) {

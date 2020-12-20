@@ -6,15 +6,74 @@ import XCTest
 import FeedStoreChallenge
 import RealmSwift
 
+class FeedImageObject: Object {
+    @objc dynamic var id: String = ""
+    @objc dynamic var feedDescription: String? = ""
+    @objc dynamic var location: String? = ""
+    @objc dynamic var url: String = ""
+
+    var local: LocalFeedImage {
+        return LocalFeedImage(id: UUID(uuidString: id)!, description: feedDescription, location: location, url: URL(string: url)!)
+    }
+
+    convenience init(image: LocalFeedImage) {
+        self.init()
+        id = image.id.uuidString
+        feedDescription = image.description
+        location = image.location
+        url = image.url.absoluteString
+    }
+
+}
+
+class FeedImageCacheObject: Object {
+    @objc dynamic var timestamp = Date()
+    var feedImageObjects = List<FeedImageObject>()
+
+    var feedImage: [LocalFeedImage] {
+        return feedImageObjects.compactMap { $0.local }
+    }
+
+    static func makeCache(_ feed: [FeedImageObject], timestamp: Date) -> FeedImageCacheObject {
+        let cache = FeedImageCacheObject()
+        cache.timestamp = timestamp
+
+        for image in feed {
+            cache.feedImageObjects.append(image)
+        }
+
+        return cache
+    }
+}
+
 class RealmFeedStore: FeedStore {
+
     func deleteCachedFeed(completion: @escaping DeletionCompletion) {
     }
 
+
     func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
+        var config = Realm.Configuration()
+        config.inMemoryIdentifier = "123"
+        let realm = try! Realm(configuration: config)
+        try! realm.write {
+            realm.add(FeedImageCacheObject.makeCache(feed.map { FeedImageObject(image: $0)}, timestamp: timestamp))
+            completion(nil)
+        }
     }
 
     func retrieve(completion: @escaping RetrievalCompletion) {
-        completion(.empty)
+
+        var config = Realm.Configuration()
+        config.inMemoryIdentifier = "123"
+        let realm = try! Realm(configuration: config)
+
+        if let cache = realm.objects(FeedImageCacheObject.self).first {
+            completion(.found(feed: cache.feedImage, timestamp: cache.timestamp))
+        } else {
+            completion(.empty)
+        }
+
     }
 }
 
@@ -45,9 +104,9 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	}
 
 	func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
-//		let sut = makeSUT()
-//
-//		assertThatRetrieveDeliversFoundValuesOnNonEmptyCache(on: sut)
+		let sut = makeSUT()
+
+		assertThatRetrieveDeliversFoundValuesOnNonEmptyCache(on: sut)
 	}
 
 	func test_retrieve_hasNoSideEffectsOnNonEmptyCache() {

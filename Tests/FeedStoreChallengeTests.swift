@@ -48,14 +48,16 @@ class FeedImageCacheObject: Object {
 
 class RealmFeedStore: FeedStore {
 
+    let realm: Realm
+
+    init(config: Realm.Configuration) throws {
+        realm = try Realm(configuration: config)
+    }
+
     func deleteCachedFeed(completion: @escaping DeletionCompletion) {
     }
 
-
     func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
-        var config = Realm.Configuration()
-        config.inMemoryIdentifier = "123"
-        let realm = try! Realm(configuration: config)
         try! realm.write {
             realm.add(FeedImageCacheObject.makeCache(feed.map { FeedImageObject(image: $0)}, timestamp: timestamp))
             completion(nil)
@@ -63,17 +65,11 @@ class RealmFeedStore: FeedStore {
     }
 
     func retrieve(completion: @escaping RetrievalCompletion) {
-
-        var config = Realm.Configuration()
-        config.inMemoryIdentifier = "123"
-        let realm = try! Realm(configuration: config)
-
         if let cache = realm.objects(FeedImageCacheObject.self).first {
             completion(.found(feed: cache.feedImage, timestamp: cache.timestamp))
         } else {
             completion(.empty)
         }
-
     }
 }
 
@@ -166,7 +162,8 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	// - MARK: Helpers
 	
 	private func makeSUT() -> FeedStore {
-		return RealmFeedStore()
+        let config = Realm.Configuration(inMemoryIdentifier: String(describing: FeedStoreChallengeTests.self))
+        return try! RealmFeedStore(config: config)
 	}
 	
 }

@@ -161,11 +161,23 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	
 	// - MARK: Helpers
 	
-	private func makeSUT() -> FeedStore {
+	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> FeedStore {
         let config = Realm.Configuration(inMemoryIdentifier: String(describing: FeedStoreChallengeTests.self))
-        return try! RealmFeedStore(config: config)
+        let sut = try! RealmFeedStore(config: config)
+
+        trackForMemoryLeaks(sut: sut,file: file, line: line)
+
+        return sut
 	}
-	
+
+}
+
+extension FeedStoreChallengeTests {
+    func trackForMemoryLeaks(sut: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak sut] in
+            XCTAssertNil(sut, file: file, line: line)
+        }
+    }
 }
 
 //  ***********************

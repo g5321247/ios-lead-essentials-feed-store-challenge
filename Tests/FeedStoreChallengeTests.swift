@@ -55,9 +55,14 @@ class RealmFeedStore: FeedStore {
     }
 
     func deleteCachedFeed(completion: @escaping DeletionCompletion) {
+        try! realm.write {
+            realm.deleteAll()
+            completion(nil)
+        }
     }
 
     func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
+        deleteCachedFeed(completion: { _ in })
         try! realm.write {
             realm.add(FeedImageCacheObject.makeCache(feed.map { FeedImageObject(image: $0)}, timestamp: timestamp))
             completion(nil)
@@ -124,9 +129,9 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	}
 
 	func test_insert_overridesPreviouslyInsertedCacheValues() {
-//		let sut = makeSUT()
-//
-//		assertThatInsertOverridesPreviouslyInsertedCacheValues(on: sut)
+		let sut = makeSUT()
+
+		assertThatInsertOverridesPreviouslyInsertedCacheValues(on: sut)
 	}
 
 	func test_delete_deliversNoErrorOnEmptyCache() {

@@ -93,14 +93,11 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	}
 	
 	// - MARK: Helpers
-	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> FeedStore {
-        var config = Realm.Configuration(inMemoryIdentifier: "\(type(of: self))")
-//        config.url = URL(string: "invalid")
+        let config = Realm.Configuration(inMemoryIdentifier: "\(type(of: self))")
         let sut = try! RealmFeedStore(config: config)
 
         trackForMemoryLeaks(sut: sut,file: file, line: line)
-
         return sut
 	}
 
@@ -113,59 +110,3 @@ extension FeedStoreChallengeTests {
         }
     }
 }
-
-//  ***********************
-//
-//  Uncomment the following tests if your implementation has failable operations.
-//
-//  Otherwise, delete the commented out code!
-//
-//  ***********************
-
-extension FeedStoreChallengeTests: FailableRetrieveFeedStoreSpecs {
-
-	func test_retrieve_deliversFailureOnRetrievalError() {
-//		let sut = makeSUT()
-//
-//		assertThatRetrieveDeliversFailureOnRetrievalError(on: sut)
-	}
-
-	func test_retrieve_hasNoSideEffectsOnFailure() {
-//		let sut = makeSUT()
-//
-//		assertThatRetrieveHasNoSideEffectsOnFailure(on: sut)
-	}
-
-}
-
-//extension FeedStoreChallengeTests: FailableInsertFeedStoreSpecs {
-//
-//	func test_insert_deliversErrorOnInsertionError() {
-////		let sut = makeSUT()
-////
-////		assertThatInsertDeliversErrorOnInsertionError(on: sut)
-//	}
-//
-//	func test_insert_hasNoSideEffectsOnInsertionError() {
-////		let sut = makeSUT()
-////
-////		assertThatInsertHasNoSideEffectsOnInsertionError(on: sut)
-//	}
-//
-//}
-
-//extension FeedStoreChallengeTests: FailableDeleteFeedStoreSpecs {
-//
-//	func test_delete_deliversErrorOnDeletionError() {
-////		let sut = makeSUT()
-////
-////		assertThatDeleteDeliversErrorOnDeletionError(on: sut)
-//	}
-//
-//	func test_delete_hasNoSideEffectsOnDeletionError() {
-////		let sut = makeSUT()
-////
-////		assertThatDeleteHasNoSideEffectsOnDeletionError(on: sut)
-//	}
-//
-//}

@@ -102,11 +102,3 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	}
 
 }
-
-extension FeedStoreChallengeTests {
-    func trackForMemoryLeaks(sut: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
-        addTeardownBlock { [weak sut] in
-            XCTAssertNil(sut, file: file, line: line)
-        }
-    }
-}

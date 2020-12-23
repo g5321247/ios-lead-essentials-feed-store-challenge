@@ -27,16 +27,22 @@ public final class RealmFeedStore: FeedStore {
     public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion) {
         deleteCachedFeed(completion: { _ in })
         try! realm.write {
-            realm.add(FeedImageCacheObject.makeCache(feed.map { FeedImageObject(image: $0)}, timestamp: timestamp))
+            realm.add(FeedImageCacheObject.cache(feed.map { FeedImageObject(image: $0)}, timestamp: timestamp))
             completion(nil)
         }
     }
 
     public func retrieve(completion: @escaping RetrievalCompletion) {
         if let cache = realm.objects(FeedImageCacheObject.self).first {
-            completion(.found(feed: cache.feedImage, timestamp: cache.timestamp))
+            completion(.found(feed: cache.feedImageObjects.toLocalFeedImage(), timestamp: cache.timestamp))
         } else {
             completion(.empty)
         }
+    }
+}
+
+private extension List where Element == FeedImageObject {
+    func toLocalFeedImage() -> [LocalFeedImage] {
+        return compactMap { $0.local }
     }
 }

@@ -12,12 +12,10 @@ import RealmSwift
 class FeedImageCacheObject: Object {
     @objc dynamic var timestamp = Date()
     var feedImageObjects = List<FeedImageObject>()
+}
 
-    var feedImage: [LocalFeedImage] {
-        return feedImageObjects.compactMap { $0.local }
-    }
-
-    static func makeCache(_ feed: [FeedImageObject], timestamp: Date) -> FeedImageCacheObject {
+extension FeedImageCacheObject {
+    static func cache(_ feed: [FeedImageObject], timestamp: Date) -> FeedImageCacheObject {
         let cache = FeedImageCacheObject()
         cache.timestamp = timestamp
 

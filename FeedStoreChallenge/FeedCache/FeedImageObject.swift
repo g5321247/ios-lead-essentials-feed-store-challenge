@@ -15,10 +15,6 @@ class FeedImageObject: Object {
     @objc dynamic var location: String? = ""
     @objc dynamic var url: String = ""
 
-    var local: LocalFeedImage {
-        return LocalFeedImage(id: UUID(uuidString: id)!, description: feedDescription, location: location, url: URL(string: url)!)
-    }
-
     convenience init(image: LocalFeedImage) {
         self.init()
         id = image.id.uuidString
@@ -26,5 +22,10 @@ class FeedImageObject: Object {
         location = image.location
         url = image.url.absoluteString
     }
+}
 
+extension FeedImageObject {
+    var local: LocalFeedImage {
+        return LocalFeedImage(id: UUID(uuidString: id)!, description: feedDescription, location: location, url: URL(string: url)!)
+    }
 }

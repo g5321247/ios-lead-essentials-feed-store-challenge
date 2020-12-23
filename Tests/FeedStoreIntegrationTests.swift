@@ -8,6 +8,7 @@
 
 import XCTest
 import FeedStoreChallenge
+import RealmSwift
 
 class FeedStoreIntegrationTests: XCTestCase {
 
@@ -31,9 +32,9 @@ class FeedStoreIntegrationTests: XCTestCase {
     }
     
     func test_retrieve_deliversNoEmptyOnEmptyCache() {
-//        let sut = makeSUT()
-//
-//        expect(sut, toRetrieve: .empty)
+        let sut = makeSUT()
+
+        expect(sut, toRetrieve: .empty)
     }
 
     func test_retrieve_deliversFeedInsertedOnAnotherInstance() {
@@ -75,10 +76,14 @@ class FeedStoreIntegrationTests: XCTestCase {
     
     // - MARK: Helpers
     
-    private func makeSUT() -> FeedStore {
-        fatalError("Must be implemented")
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> FeedStore {
+        let config = Realm.Configuration(fileURL: testSpecificStoreURL())
+        let sut = try! RealmFeedStore(config: config)
+
+        trackForMemoryLeaks(sut: sut,file: file, line: line)
+        return sut
     }
-    
+
     private func setupEmptyStoreState() {
 
     }
@@ -86,5 +91,21 @@ class FeedStoreIntegrationTests: XCTestCase {
     private func undoStoreSideEffects() {
 
     }
-    
+
+    private func testSpecificStoreURL() -> URL {
+        return cachesDirectory().appendingPathComponent("\(type(of: self)).store")
+    }
+
+    private func cachesDirectory() -> URL {
+        return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+    }
+
+}
+
+extension FeedStoreIntegrationTests {
+    func trackForMemoryLeaks(sut: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak sut] in
+            XCTAssertNil(sut, file: file, line: line)
+        }
+    }
 }

@@ -76,7 +76,7 @@ class FeedStoreIntegrationTests: XCTestCase {
     
     // - MARK: Helpers
     
-    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> FeedStore {
+    private func makeSUT(file: StaticString = #file, line: UInt = #line) -> FeedStore {
         let config = Realm.Configuration(fileURL: testSpecificStoreURL())
         let sut = try! RealmFeedStore(config: config)
 

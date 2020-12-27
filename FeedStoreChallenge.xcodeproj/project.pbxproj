@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,12 +18,14 @@
 		08CE2BB22285BCE700183A1B /* XCTestCase+FailableDeleteFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE2BAD2285BCE700183A1B /* XCTestCase+FailableDeleteFeedStoreSpecs.swift */; };
 		08CE2BB32285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE2BAE2285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift */; };
 		08CE2BB52285BEF100183A1B /* FeedStoreChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CE2BB42285BEF100183A1B /* FeedStoreChallengeTests.swift */; };
-		0E6BB6804BFE128952EF8081 /* Pods_FeedStoreChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD40628C256D5B76509F500 /* Pods_FeedStoreChallenge.framework */; };
-		10D5612DFDB4498AC9FE0EA5 /* Pods_FeedStoreChallenge_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCA3AF5F5821CCAB85E4DB5A /* Pods_FeedStoreChallenge_Tests.framework */; };
 		C46C65C325930DF800D345BC /* RealmFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46C65C225930DF800D345BC /* RealmFeedStore.swift */; };
 		C46C65C725930F1600D345BC /* FeedImageCacheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46C65C625930F1600D345BC /* FeedImageCacheObject.swift */; };
 		C46C65CB25930F3500D345BC /* FeedImageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46C65CA25930F3500D345BC /* FeedImageObject.swift */; };
 		C46C65D02593288500D345BC /* XCTestCase+MemoryLeaksTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46C65CF2593288500D345BC /* XCTestCase+MemoryLeaksTracking.swift */; };
+		C805BF252598F69000DE122A /* Realm.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C805BF212598F68C00DE122A /* Realm.xcframework */; };
+		C805BF262598F69000DE122A /* Realm.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C805BF212598F68C00DE122A /* Realm.xcframework */; };
+		C805BF272598F69100DE122A /* RealmSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C805BF222598F68C00DE122A /* RealmSwift.xcframework */; };
+		C805BF282598F69100DE122A /* RealmSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C805BF222598F68C00DE122A /* RealmSwift.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,21 @@
 			remoteInfo = FeedStoreChallenge;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C892B7392598E4F200B439E0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C805BF262598F69000DE122A /* Realm.xcframework in Embed Frameworks */,
+				C805BF282598F69100DE122A /* RealmSwift.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		084BB13B24FE50A10091C705 /* FeedStoreIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreIntegrationTests.swift; sourceTree = "<group>"; };
@@ -51,17 +68,13 @@
 		08CE2BAD2285BCE700183A1B /* XCTestCase+FailableDeleteFeedStoreSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableDeleteFeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		08CE2BAE2285BCE700183A1B /* XCTestCase+FailableInsertFeedStoreSpecs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+FailableInsertFeedStoreSpecs.swift"; sourceTree = "<group>"; };
 		08CE2BB42285BEF100183A1B /* FeedStoreChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStoreChallengeTests.swift; sourceTree = "<group>"; };
-		80122E016B8CD3C58101F336 /* Pods-FeedStoreChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedStoreChallenge.release.xcconfig"; path = "Target Support Files/Pods-FeedStoreChallenge/Pods-FeedStoreChallenge.release.xcconfig"; sourceTree = "<group>"; };
-		C20E6ED94277668335E1D2B7 /* Pods-FeedStoreChallenge-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedStoreChallenge-Tests.release.xcconfig"; path = "Target Support Files/Pods-FeedStoreChallenge-Tests/Pods-FeedStoreChallenge-Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C46C65C225930DF800D345BC /* RealmFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFeedStore.swift; sourceTree = "<group>"; };
 		C46C65C625930F1600D345BC /* FeedImageCacheObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCacheObject.swift; sourceTree = "<group>"; };
 		C46C65CA25930F3500D345BC /* FeedImageObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageObject.swift; sourceTree = "<group>"; };
 		C46C65CF2593288500D345BC /* XCTestCase+MemoryLeaksTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeaksTracking.swift"; sourceTree = "<group>"; };
+		C805BF212598F68C00DE122A /* Realm.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Realm.xcframework; path = Dependencies/Realm.xcframework; sourceTree = SOURCE_ROOT; };
+		C805BF222598F68C00DE122A /* RealmSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = RealmSwift.xcframework; path = Dependencies/RealmSwift.xcframework; sourceTree = SOURCE_ROOT; };
 		C86237372598C8D40051CADA /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D17AEF3D4E1C1F816892A69C /* Pods-FeedStoreChallenge-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedStoreChallenge-Tests.debug.xcconfig"; path = "Target Support Files/Pods-FeedStoreChallenge-Tests/Pods-FeedStoreChallenge-Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		DBD40628C256D5B76509F500 /* Pods_FeedStoreChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedStoreChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EFCBB09E46995E7BB5420399 /* Pods-FeedStoreChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedStoreChallenge.debug.xcconfig"; path = "Target Support Files/Pods-FeedStoreChallenge/Pods-FeedStoreChallenge.debug.xcconfig"; sourceTree = "<group>"; };
-		FCA3AF5F5821CCAB85E4DB5A /* Pods_FeedStoreChallenge_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedStoreChallenge_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E6BB6804BFE128952EF8081 /* Pods_FeedStoreChallenge.framework in Frameworks */,
+				C805BF252598F69000DE122A /* Realm.xcframework in Frameworks */,
+				C805BF272598F69100DE122A /* RealmSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,7 +92,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				08CE2B952285BBD100183A1B /* FeedStoreChallenge.framework in Frameworks */,
-				10D5612DFDB4498AC9FE0EA5 /* Pods_FeedStoreChallenge_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +101,7 @@
 		08CE2B812285BBD100183A1B = {
 			isa = PBXGroup;
 			children = (
+				C892B7482598EE7F00B439E0 /* Dependencies */,
 				08CE2B8D2285BBD100183A1B /* FeedStoreChallenge */,
 				08CE2B982285BBD100183A1B /* Tests */,
 				08CE2B8C2285BBD100183A1B /* Products */,
@@ -144,10 +158,6 @@
 		7B2D06E220413B2B69EEA7A0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EFCBB09E46995E7BB5420399 /* Pods-FeedStoreChallenge.debug.xcconfig */,
-				80122E016B8CD3C58101F336 /* Pods-FeedStoreChallenge.release.xcconfig */,
-				D17AEF3D4E1C1F816892A69C /* Pods-FeedStoreChallenge-Tests.debug.xcconfig */,
-				C20E6ED94277668335E1D2B7 /* Pods-FeedStoreChallenge-Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -174,10 +184,18 @@
 			isa = PBXGroup;
 			children = (
 				C86237372598C8D40051CADA /* RealmSwift.framework */,
-				DBD40628C256D5B76509F500 /* Pods_FeedStoreChallenge.framework */,
-				FCA3AF5F5821CCAB85E4DB5A /* Pods_FeedStoreChallenge_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C892B7482598EE7F00B439E0 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				C805BF212598F68C00DE122A /* Realm.xcframework */,
+				C805BF222598F68C00DE122A /* RealmSwift.xcframework */,
+			);
+			name = Dependencies;
+			path = FeedStoreChallenge/Dependencies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,11 +215,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 08CE2B9F2285BBD100183A1B /* Build configuration list for PBXNativeTarget "FeedStoreChallenge" */;
 			buildPhases = (
-				928D33813422D57F4C20661B /* [CP] Check Pods Manifest.lock */,
 				08CE2B862285BBD100183A1B /* Headers */,
 				08CE2B872285BBD100183A1B /* Sources */,
 				08CE2B882285BBD100183A1B /* Frameworks */,
 				08CE2B892285BBD100183A1B /* Resources */,
+				C892B7392598E4F200B439E0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -216,11 +234,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 08CE2BA22285BBD100183A1B /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
-				9A6FBC52C04063F64E12022C /* [CP] Check Pods Manifest.lock */,
 				08CE2B902285BBD100183A1B /* Sources */,
 				08CE2B912285BBD100183A1B /* Frameworks */,
 				08CE2B922285BBD100183A1B /* Resources */,
-				E91F7D2E5C31BD6A15DCAD17 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -287,70 +303,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		928D33813422D57F4C20661B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FeedStoreChallenge-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9A6FBC52C04063F64E12022C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FeedStoreChallenge-Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E91F7D2E5C31BD6A15DCAD17 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FeedStoreChallenge-Tests/Pods-FeedStoreChallenge-Tests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FeedStoreChallenge-Tests/Pods-FeedStoreChallenge-Tests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FeedStoreChallenge-Tests/Pods-FeedStoreChallenge-Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		08CE2B872285BBD100183A1B /* Sources */ = {
@@ -517,7 +469,6 @@
 		};
 		08CE2BA02285BBD100183A1B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EFCBB09E46995E7BB5420399 /* Pods-FeedStoreChallenge.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -536,6 +487,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.essentialdeveloper.FeedStoreChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -546,7 +498,6 @@
 		};
 		08CE2BA12285BBD100183A1B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 80122E016B8CD3C58101F336 /* Pods-FeedStoreChallenge.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -565,6 +516,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.essentialdeveloper.FeedStoreChallenge;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -574,7 +526,6 @@
 		};
 		08CE2BA32285BBD100183A1B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D17AEF3D4E1C1F816892A69C /* Pods-FeedStoreChallenge-Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -595,7 +546,6 @@
 		};
 		08CE2BA42285BBD100183A1B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C20E6ED94277668335E1D2B7 /* Pods-FeedStoreChallenge-Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_IDENTITY = "-";

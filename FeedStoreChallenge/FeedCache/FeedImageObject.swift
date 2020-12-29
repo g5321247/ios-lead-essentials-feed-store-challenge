@@ -25,7 +25,14 @@ class FeedImageObject: Object {
 }
 
 extension FeedImageObject {
-    var local: LocalFeedImage {
-        return LocalFeedImage(id: UUID(uuidString: id)!, description: feedDescription, location: location, url: URL(string: url)!)
+    var local: LocalFeedImage? {
+        guard let id = UUID(uuidString: id), let url = URL(string: url) else { return nil }
+
+        return LocalFeedImage(
+            id: id,
+            description: feedDescription,
+            location: location,
+            url: url
+        )
     }
 }

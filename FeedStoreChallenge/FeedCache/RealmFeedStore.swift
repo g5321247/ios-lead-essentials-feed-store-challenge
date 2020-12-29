@@ -11,7 +11,7 @@ import RealmSwift
 
 public final class RealmFeedStore: FeedStore {
 
-    let realm: Realm
+    private let realm: Realm
 
     public init(config: Realm.Configuration) throws {
         realm = try Realm(configuration: config)
